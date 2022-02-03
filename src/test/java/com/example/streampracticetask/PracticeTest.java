@@ -79,6 +79,18 @@ public class PracticeTest {
     }
 
     @Test
+    public void shouldAllEmployeeSalaryGreaterThan1000() {
+        boolean actualValue = Practice.checkIfThereIsNoSalaryLessThan1000();
+        Assert.assertTrue(actualValue);
+    }
+
+    @Test
+    public void shouldAllEmployeeSalaryGreaterThan2000InITDepartment() {
+        boolean actualValue = Practice.checkIfThereIsAnySalaryGreaterThan2000InITDepartment();
+        Assert.assertTrue(actualValue);
+    }
+
+    @Test
     public void shouldGetAllEmployeesWithLessSalaryThan5000() {
         List<Employee> incomeLessThan5000 = Practice.getAllEmployeesWithLessSalaryThan5000();
         int exceptedValue = 49;
