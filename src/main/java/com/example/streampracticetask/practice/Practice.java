@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class Practice {
@@ -37,7 +36,7 @@ public class Practice {
 
     // You can use the services above for all the CRUD (create, read, update, delete) operations.
     // Above services have all the required methods.
-    // Also, you can check all the methods in the ServiceImpl classes, they all have explanations.
+    // Also, you can check all the methods in the ServiceImpl classes inside the service.impl package, they all have explanations.
 
     // Display all the employees
     public static List<Employee> getAllEmployees() {
