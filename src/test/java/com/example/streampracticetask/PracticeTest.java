@@ -1,22 +1,19 @@
 package com.example.streampracticetask;
 
 import com.example.streampracticetask.bootstrap.DataGenerator;
-import com.example.streampracticetask.dto.Employee;
-import com.example.streampracticetask.dto.JobHistory;
+import com.example.streampracticetask.dto.*;
 import com.example.streampracticetask.practice.Practice;
 import com.example.streampracticetask.service.*;
-import com.example.streampracticetask.service.impl.DepartmentServiceImpl;
-import com.example.streampracticetask.service.impl.EmployeeServiceImpl;
-import com.example.streampracticetask.service.impl.JobHistoryServiceImpl;
+import com.example.streampracticetask.service.impl.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PracticeTest {
@@ -27,14 +24,9 @@ public class PracticeTest {
     private EmployeeService employeeService;
     private DepartmentService departmentService;
     private JobHistoryService jobHistoryService;
-
-    @Mock
     private CountryService countryService;
-    @Mock
     private JobService jobService;
-    @Mock
     private LocationService locationService;
-    @Mock
     private RegionService regionService;
 
     @Before
@@ -42,6 +34,10 @@ public class PracticeTest {
         employeeService = new EmployeeServiceImpl();
         departmentService = new DepartmentServiceImpl();
         jobHistoryService = new JobHistoryServiceImpl();
+        countryService = new CountryServiceImpl();
+        jobService = new JobServiceImpl();
+        locationService = new LocationServiceImpl();
+        regionService = new RegionServiceImpl();
         dataGenerator = new DataGenerator(countryService, departmentService,
                 employeeService, jobHistoryService,
                 jobService, locationService, regionService);
@@ -56,6 +52,48 @@ public class PracticeTest {
         List<Employee> employeeList = Practice.getAllEmployees();
         int exceptedValue = 107;
         Assert.assertEquals(exceptedValue, employeeList.size());
+    }
+
+    @Test
+    public void shouldGetAllCountries() {
+        List<Country> countryList = Practice.getAllCountries();
+        int exceptedValue = 25;
+        Assert.assertEquals(exceptedValue, countryList.size());
+    }
+
+    @Test
+    public void shouldGetAllDepartments() {
+        List<Department> departmentList = Practice.getAllDepartments();
+        int exceptedValue = 27;
+        Assert.assertEquals(exceptedValue, departmentList.size());
+    }
+
+    @Test
+    public void shouldGetAllJobs() {
+        List<Job> jobList = Practice.getAllJobs();
+        int exceptedValue = 19;
+        Assert.assertEquals(exceptedValue, jobList.size());
+    }
+
+    @Test
+    public void shouldGetAllLocations() {
+        List<Location> locationList = Practice.getAllLocations();
+        int exceptedValue = 23;
+        Assert.assertEquals(exceptedValue, locationList.size());
+    }
+
+    @Test
+    public void shouldGetAllRegions() {
+        List<Region> regionList = Practice.getAllRegions();
+        int exceptedValue = 4;
+        Assert.assertEquals(exceptedValue, regionList.size());
+    }
+
+    @Test
+    public void shouldGetAllJobHistories() {
+        List<JobHistory> jobHistoryList = Practice.getAllJobHistories();
+        int exceptedValue = 10;
+        Assert.assertEquals(exceptedValue, jobHistoryList.size());
     }
 
     @Test
@@ -76,6 +114,75 @@ public class PracticeTest {
                 }
             }
         }
+    }
+
+    @Test
+    public void shouldGetAllCountryNames() {
+        List<Country> countryList = Practice.getAllCountries();
+        List<String> nameList = Practice.getAllCountryNames();
+        Assert.assertNotEquals(0, countryList.size());
+        Assert.assertNotEquals(0, nameList.size());
+        Assert.assertEquals(countryList.size(), nameList.size());
+        for (int i = 0; i < countryList.size(); i++) {
+            Country country = countryList.get(i);
+            String randomName = nameList.get(i);
+            if (!country.getCountryName().equals(randomName)) {
+                try {
+                    throw new Exception();
+                } catch (Exception e) {
+                    Assert.fail();
+                }
+            }
+        }
+    }
+
+    @Test
+    public void shouldGetAllDepartmentManagerFirstNames() {
+        List<Department> departmentList = Practice.getAllDepartments();
+        List<String> nameList = Practice.getAllDepartmentManagerFirstNames();
+        Assert.assertNotEquals(0, departmentList.size());
+        Assert.assertNotEquals(0, nameList.size());
+        Assert.assertEquals(departmentList.size(), nameList.size());
+        for (int i = 0; i < departmentList.size(); i++) {
+            Department department = departmentList.get(i);
+            String randomName = nameList.get(i);
+            if (!department.getManager().getFirstName().equals(randomName)) {
+                try {
+                    throw new Exception();
+                } catch (Exception e) {
+                    Assert.fail();
+                }
+            }
+        }
+    }
+
+    @Test
+    public void shouldGetAllDepartmentsWhichManagerFirstNameIsSteven() {
+        List<Department> departmentList = Practice.getAllDepartmentsWhichManagerFirstNameIsSteven();
+        Assert.assertEquals(17, departmentList.size());
+        Assert.assertEquals("Steven", departmentList.get(0).getManager().getFirstName());
+    }
+
+    @Test
+    public void shouldGetAllDepartmentsWhereLocationPostalCodeIs98199() {
+        List<Department> departmentList = Practice.getAllDepartmentsWhereLocationPostalCodeIs98199();
+        Assert.assertEquals(21, departmentList.size());
+        Assert.assertEquals("98199", departmentList.get(0).getLocation().getPostalCode());
+    }
+
+    @Test
+    public void shouldGetRegionOfITDepartment() throws Exception {
+        Region region = Practice.getRegionOfITDepartment();
+        Assert.assertEquals("Americas", region.getRegionName());
+        long expectedValue = 2;
+        Assert.assertEquals(expectedValue, region.getId().longValue());
+    }
+
+    @Test
+    public void shouldGetAllDepartmentsWhereRegionOfCountryIsEurope() {
+        List<Department> departmentList = Practice.getAllDepartmentsWhereRegionOfCountryIsEurope();
+        Assert.assertEquals(3, departmentList.size());
+        Assert.assertEquals("Europe", departmentList.get(0).getLocation().getCountry().getRegion().getRegionName());
     }
 
     @Test
@@ -127,6 +234,19 @@ public class PracticeTest {
     }
 
     @Test
+    public void shouldGetMaxSalaryEmployeeJob() throws Exception {
+        Job job = Practice.getMaxSalaryEmployeeJob();
+        Assert.assertEquals("President", job.getJobTitle());
+        Assert.assertEquals("AD_PRES", job.getId());
+    }
+
+    @Test
+    public void shouldGetMaxSalaryInAmericasRegion() throws Exception {
+        Long salary = Practice.getMaxSalaryInAmericasRegion();
+        Assert.assertEquals(24000L, salary.longValue());
+    }
+
+    @Test
     public void shouldGetMaxSecondSalary() throws Exception {
         long maxSalary = Practice.getSecondMaxSalary();
         long expectedSalary = 17000;
@@ -134,7 +254,7 @@ public class PracticeTest {
     }
 
     @Test
-    public void shouldGetSeconMaxSalaryEmployee() throws Exception {
+    public void shouldGetSecondMaxSalaryEmployee() throws Exception {
         List<Employee> employees = Practice.getSecondMaxSalaryEmployee();
         long actualSalary = 17000;
         Assert.assertEquals(2, employees.size());
@@ -173,10 +293,10 @@ public class PracticeTest {
     }
 
     @Test
-    public void shouldGetAvaregeSalary(){
-        double avarageSalary = Practice.getAverageSalary();
+    public void shouldGetAverageSalary(){
+        double averageSalary = Practice.getAverageSalary();
         double expectedAverageSalary = 6461.8317757009345;
-        Assert.assertEquals(expectedAverageSalary, avarageSalary, DELTA);
+        Assert.assertEquals(expectedAverageSalary, averageSalary, DELTA);
     }
 
     @Test
@@ -194,10 +314,26 @@ public class PracticeTest {
     }
 
     @Test
+    public void shouldGetAllEmployeesForEachDepartment() {
+        Map<Long, List<Employee>> map = Practice.getAllEmployeesForEachDepartment();
+        Assert.assertEquals(35L, map.get(80L).size());
+        Assert.assertTrue(map.containsKey(60L));
+        Assert.assertEquals(5L, map.get(60L).size());
+    }
+
+    @Test
     public void shouldGetTotalDepartmentsNumber(){
-        long totalDeparmentsNumber = Practice.getTotalDepartmentsNumber();
+        long totalDepartmentsNumber = Practice.getTotalDepartmentsNumber();
         long expectedValue =27;
-        Assert.assertEquals(expectedValue, totalDeparmentsNumber);
+        Assert.assertEquals(expectedValue, totalDepartmentsNumber);
+    }
+
+    @Test
+    public void shouldGetEmployeeWhoseFirstNameIsAlyssaAndManagersFirstNameIsEleniAndDepartmentNameIsSales() throws Exception {
+        Employee employee = Practice.getEmployeeWhoseFirstNameIsAlyssaAndManagersFirstNameIsEleniAndDepartmentNameIsSales();
+        Assert.assertEquals(175L, employee.getId().longValue());
+        Assert.assertEquals("Alyssa", employee.getFirstName());
+        Assert.assertEquals("Hutton", employee.getLastName());
     }
 
     @Test
@@ -226,7 +362,26 @@ public class PracticeTest {
     }
 
     @Test
-    // todo ask for loop is necessary
+    public void shouldGetAllJobHistoriesStartDateAfterFirstDayOfJanuary2005() {
+        List<JobHistory> jobHistoryList = Practice.getAllJobHistoriesStartDateAfterFirstDayOfJanuary2005();
+        Assert.assertEquals(4, jobHistoryList.size());
+    }
+
+    @Test
+    public void shouldGetAllJobHistoriesEndDateIsLastDayOfDecember2007AndJobTitleIsProgrammer() {
+        List<JobHistory> jobHistoryList = Practice.getAllJobHistoriesEndDateIsLastDayOfDecember2007AndJobTitleIsProgrammer();
+        Assert.assertEquals(1, jobHistoryList.size());
+    }
+
+    @Test
+    public void shouldGetEmployeeOfJobHistoryWhoseStartDateIsFirstDayOfJanuary2007AndEndDateIsLastDayOfDecember2007AndDepartmentNameIsShipping() throws Exception {
+        Employee employee = Practice.getEmployeeOfJobHistoryWhoseStartDateIsFirstDayOfJanuary2007AndEndDateIsLastDayOfDecember2007AndDepartmentNameIsShipping();
+        Assert.assertEquals("Payam", employee.getFirstName());
+        Assert.assertEquals("Kaufling", employee.getLastName());
+        Assert.assertEquals(122L,employee.getId().longValue());
+    }
+
+    @Test
     public void shouldGetAllEmployeesFirstNameStartsWithA(){
         List<Employee> employees = Practice.getAllEmployeesFirstNameStartsWithA();
         int expectedValue = 10;
@@ -243,7 +398,6 @@ public class PracticeTest {
     }
 
     @Test
-    // todo ask for loop is necessary
     public void shouldGetAllEmployeesJobIdContainsIT(){
         List<Employee> employees = Practice.getAllEmployeesJobIdContainsIT();
         int expectedValue = 5;
@@ -257,6 +411,12 @@ public class PracticeTest {
                 }
             }
         }
+    }
+
+    @Test
+    public void shouldGetNumberOfEmployeesWhoseJobTitleIsProgrammerAndDepartmentNameIsIT() {
+        Long employeeNumber = Practice.getNumberOfEmployeesWhoseJobTitleIsProgrammerAndDepartmentNameIsIT();
+        Assert.assertEquals(5L, employeeNumber.longValue());
     }
 
     @Test
@@ -332,4 +492,5 @@ public class PracticeTest {
         int expectedValue = 93;
         Assert.assertEquals(expectedValue, employees.size());
     }
+
 }

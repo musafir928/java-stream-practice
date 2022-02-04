@@ -1,12 +1,10 @@
 package com.example.streampracticetask.practice;
 
-import com.example.streampracticetask.dto.Employee;
-import com.example.streampracticetask.dto.JobHistory;
+import com.example.streampracticetask.dto.*;
 import com.example.streampracticetask.service.*;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class Practice {
@@ -44,8 +42,80 @@ public class Practice {
         return new ArrayList<>();
     }
 
-    // Display all the employees' first name
+    // Display all the countries
+    public static List<Country> getAllCountries() {
+        //TODO Implement the method
+        return new ArrayList<>();
+    }
+
+    // Display all the departments
+    public static List<Department> getAllDepartments() {
+        //TODO Implement the method
+        return new ArrayList<>();
+    }
+
+    // Display all the jobs
+    public static List<Job> getAllJobs() {
+        //TODO Implement the method
+        return new ArrayList<>();
+    }
+
+    // Display all the locations
+    public static List<Location> getAllLocations() {
+        //TODO Implement the method
+        return new ArrayList<>();
+    }
+
+    // Display all the regions
+    public static List<Region> getAllRegions() {
+        //TODO Implement the method
+        return new ArrayList<>();
+    }
+
+    // Display all the job histories
+    public static List<JobHistory> getAllJobHistories() {
+        //TODO Implement the method
+        return new ArrayList<>();
+    }
+
+    // Display all the employees' first names
     public static List<String> getAllEmployeesFirstName() {
+        //TODO Implement the method
+        return new ArrayList<>();
+    }
+
+    // Display all the countries' names
+    public static List<String> getAllCountryNames() {
+        //TODO Implement the method
+        return new ArrayList<>();
+    }
+
+    // Display all the departments' managers' first names
+    public static List<String> getAllDepartmentManagerFirstNames() {
+        //TODO Implement the method
+        return new ArrayList<>();
+    }
+
+    // Display all the departments where manager name of the department is 'Steven'
+    public static List<Department> getAllDepartmentsWhichManagerFirstNameIsSteven() {
+        //TODO Implement the method
+        return new ArrayList<>();
+    }
+
+    // Display all the departments where postal code of the location of the department is '98199'
+    public static List<Department> getAllDepartmentsWhereLocationPostalCodeIs98199() {
+        //TODO Implement the method
+        return new ArrayList<>();
+    }
+
+    // Display the region of the IT department
+    public static Region getRegionOfITDepartment() throws Exception {
+        //TODO Implement the method
+        return new Region();
+    }
+
+    // Display all the departments where the region of department is 'Europe'
+    public static List<Department> getAllDepartmentsWhereRegionOfCountryIsEurope() {
         //TODO Implement the method
         return new ArrayList<>();
     }
@@ -89,6 +159,18 @@ public class Practice {
     public static List<Employee> getMaxSalaryEmployee() {
         //TODO Implement the method
         return new ArrayList<>();
+    }
+
+    // Display the max salary employee's job
+    public static Job getMaxSalaryEmployeeJob() throws Exception {
+        //TODO Implement the method
+        return new Job();
+    }
+
+    // Display the max salary in Americas Region
+    public static Long getMaxSalaryInAmericasRegion() throws Exception {
+        //TODO Implement the method
+        return 1L;
     }
 
     // Display the second maximum salary an employee gets
@@ -145,10 +227,22 @@ public class Practice {
         return new ArrayList<>();
     }
 
+    // Display all the employees separated based on their department id number
+    public static Map<Long, List<Employee>> getAllEmployeesForEachDepartment() {
+        //TODO Implement the method
+        return new HashMap<>();
+    }
+
     // Display the total number of the departments
     public static Long getTotalDepartmentsNumber() {
         //TODO Implement the method
         return 1L;
+    }
+
+    // Display the employee whose first name is 'Alyssa' and manager's first name is 'Eleni' and department name is 'Sales'
+    public static Employee getEmployeeWhoseFirstNameIsAlyssaAndManagersFirstNameIsEleniAndDepartmentNameIsSales() throws Exception {
+        //TODO Implement the method
+        return new Employee();
     }
 
     // Display all the job histories in ascending order by start date
@@ -163,6 +257,24 @@ public class Practice {
         return new ArrayList<>();
     }
 
+    // Display all the job histories where the start date is after 01.01.2005
+    public static List<JobHistory> getAllJobHistoriesStartDateAfterFirstDayOfJanuary2005() {
+        //TODO Implement the method
+        return new ArrayList<>();
+    }
+
+    // Display all the job histories where the end date is 31.12.2007 and the job title of job is 'Programmer'
+    public static List<JobHistory> getAllJobHistoriesEndDateIsLastDayOfDecember2007AndJobTitleIsProgrammer() {
+        //TODO Implement the method
+        return new ArrayList<>();
+    }
+
+    // Display the employee whose job history start date is 01.01.2007 and job history end date is 31.12.2007 and department's name is 'Shipping'
+    public static Employee getEmployeeOfJobHistoryWhoseStartDateIsFirstDayOfJanuary2007AndEndDateIsLastDayOfDecember2007AndDepartmentNameIsShipping() throws Exception {
+        //TODO Implement the method
+        return new Employee();
+    }
+
     // Display all the employees whose first name starts with 'A'
     public static List<Employee> getAllEmployeesFirstNameStartsWithA() {
         //TODO Implement the method
@@ -173,6 +285,12 @@ public class Practice {
     public static List<Employee> getAllEmployeesJobIdContainsIT() {
         //TODO Implement the method
         return new ArrayList<>();
+    }
+
+    // Display the number of employees whose job title is programmer and department name is 'IT'
+    public static Long getNumberOfEmployeesWhoseJobTitleIsProgrammerAndDepartmentNameIsIT() {
+        //TODO Implement the method
+        return 1L;
     }
 
     // Display all the employees whose department id is 50, 80, or 100
@@ -217,4 +335,5 @@ public class Practice {
         //TODO Implement the method
         return new ArrayList<>();
     }
+
 }

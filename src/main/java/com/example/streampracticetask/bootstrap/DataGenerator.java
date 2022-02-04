@@ -707,7 +707,7 @@ public class DataGenerator implements CommandLineRunner {
         JobHistory jobHistory6 = new JobHistory(employee23, LocalDate.of(2007, 1, 1), LocalDate.of(2007, 12, 31), job13, department5);
         JobHistory jobHistory7 = new JobHistory(employee101, LocalDate.of(1995, 9, 17), LocalDate.of(2001, 6, 17), job3, department9);
         JobHistory jobHistory8 = new JobHistory(employee77, LocalDate.of(2006, 3, 24), LocalDate.of(2006, 12, 31), job9, department8);
-        JobHistory jobHistory9 = new JobHistory(employee77, LocalDate.of(2007, 1, 1), LocalDate.of(2007, 12, 31), job8, department8);
+        JobHistory jobHistory9 = new JobHistory(employee77, LocalDate.of(2007, 1, 1), LocalDate.of(2007, 12, 31), job15, department8);
         JobHistory jobHistory10 = new JobHistory(employee101, LocalDate.of(2002, 7, 1), LocalDate.of(2006, 12, 31), job7, department9);
 
         List<JobHistory> jobHistoryList = new ArrayList<>() {{
