@@ -1,6 +1,6 @@
 package com.example.streampracticetask.service.impl;
 
-import com.example.streampracticetask.dto.Country;
+import com.example.streampracticetask.model.Country;
 import com.example.streampracticetask.service.CountryService;
 import org.springframework.stereotype.Service;
 

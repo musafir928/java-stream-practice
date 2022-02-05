@@ -1,7 +1,7 @@
 package com.example.streampracticetask;
 
 import com.example.streampracticetask.bootstrap.DataGenerator;
-import com.example.streampracticetask.dto.*;
+import com.example.streampracticetask.model.*;
 import com.example.streampracticetask.practice.Practice;
 import com.example.streampracticetask.service.*;
 import com.example.streampracticetask.service.impl.*;

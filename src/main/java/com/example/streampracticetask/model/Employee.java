@@ -1,4 +1,4 @@
-package com.example.streampracticetask.dto;
+package com.example.streampracticetask.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

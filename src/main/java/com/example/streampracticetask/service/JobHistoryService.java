@@ -1,6 +1,6 @@
 package com.example.streampracticetask.service;
 
-import com.example.streampracticetask.dto.JobHistory;
+import com.example.streampracticetask.model.JobHistory;
 
 import java.util.List;
 

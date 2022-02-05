@@ -1,6 +1,6 @@
 package com.example.streampracticetask.service;
 
-import com.example.streampracticetask.dto.Country;
+import com.example.streampracticetask.model.Country;
 
 public interface CountryService extends CrudService<Country, String> {
 }

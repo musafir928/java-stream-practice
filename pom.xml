@@ -11,8 +11,8 @@
     <groupId>com.example</groupId>
     <artifactId>StreamPracticeTask</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>StreamPracticeTask</name>
-    <description>StreamPracticeTask</description>
+    <name>streams-practice</name>
+    <description>streams-practice</description>
     <properties>
         <java.version>11</java.version>
     </properties>

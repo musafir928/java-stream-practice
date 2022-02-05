@@ -1,6 +1,6 @@
 package com.example.streampracticetask.service.impl;
 
-import com.example.streampracticetask.dto.JobHistory;
+import com.example.streampracticetask.model.JobHistory;
 import com.example.streampracticetask.service.JobHistoryService;
 import org.springframework.stereotype.Service;
 
