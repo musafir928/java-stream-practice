@@ -14,6 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PracticeTest {
@@ -354,7 +355,7 @@ public class PracticeTest {
         List<JobHistory> jobHistoryList = Practice.getAllJobHistoriesInDescendingOrder();
         Assert.assertEquals(10, jobHistoryList.size());
 
-        LocalDate localDateLast = LocalDate.of(2006,1,1);
+        LocalDate localDateLast = LocalDate.of(2007,1,1);
         Assert.assertEquals(jobHistoryList.get(0).getStartDate(), localDateLast);
 
         LocalDate localDateFirst = LocalDate.of(1995,9,17);
